@@ -14,4 +14,6 @@ RUN mkdir -p $WORK_PATH
 COPY ./$INIT_DUAN_DATABASE $WORK_PATH/
 COPY ./$INSTALL_DATA_SHELL $AUTO_RUN_DIR/
 
+ADD mysqld.cnf /etc/mysql/mysql.conf.d/
+
 RUN chmod a+x $AUTO_RUN_DIR/$INSTALL_DATA_SHELL
