@@ -1,19 +1,17 @@
 FROM mysql:5.7
 MAINTAINER leon_xi@163.com
 
-ENV MYSQL_ROOT_PASSWORD '1234'
-ENV MYSQL_DATABASE duan
+#设置免密登录
+ENV MYSQL_ALLOW_EMPTY_PASSWORD yes
 
-ENV WORK_PATH /usr/local/work
-ENV AUTO_RUN_DIR /docker-entrypoint-initdb.d
-ENV INSTALL_DATA_SHELL install_database.sh
-ENV INIT_DUAN_DATABASE init_database_duan.sql
+#将所需文件放到容器中
+COPY setup.sh /mysql/setup.sh
+COPY init_database_duan.sql /mysql/init_database_duan.sql
+COPY init_database_duan_privileges.sql /mysql/init_database_duan_privileges.sql
 
-RUN mkdir -p $WORK_PATH
-
-COPY ./$INIT_DUAN_DATABASE $WORK_PATH/
-COPY ./$INSTALL_DATA_SHELL $AUTO_RUN_DIR/
+RUN chmod +x /mysql/setup.sh
 
 ADD mysqld.cnf /etc/mysql/mysql.conf.d/
 
-RUN chmod a+x $AUTO_RUN_DIR/$INSTALL_DATA_SHELL
+#设置容器启动时执行的命令
+CMD ["sh", "/mysql/setup.sh"]
