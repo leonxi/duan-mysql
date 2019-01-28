@@ -11,7 +11,5 @@ COPY init_database_duan_privileges.sql /mysql/init_database_duan_privileges.sql
 
 RUN chmod +x /mysql/setup.sh
 
-ADD mysqld.cnf /etc/mysql/mysql.conf.d/
-
 #设置容器启动时执行的命令
 CMD ["sh", "/mysql/setup.sh"]
