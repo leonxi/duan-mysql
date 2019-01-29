@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
- 
+
+mysqld --lower_case_table_names=1&
+
 #查看mysql服务的状态，方便调试，这条语句可以删除
 echo `service mysql status`
  
