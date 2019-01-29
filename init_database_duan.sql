@@ -14,6 +14,7 @@ create table if not exists `gateway_api_define` (
   primary key (`id`)
 ) engine=innodb default charset=utf8;
 
+INSERT INTO `gateway_api_define` (`id`, `path`, `service_id`, `url`, `retryable`, `enabled`, `strip_prefix`, `api_name`) VALUES ('aad', '/aad/**', NULL, 'http://duan-aad:8080/aad/', '0', '1', '1', NULL);
 INSERT INTO `gateway_api_define` (`id`, `path`, `service_id`, `url`, `retryable`, `enabled`, `strip_prefix`, `api_name`) VALUES ('aba', '/aba/**', NULL, 'http://duan-aba:8080/aba/', '0', '1', '1', NULL);
 INSERT INTO `gateway_api_define` (`id`, `path`, `service_id`, `url`, `retryable`, `enabled`, `strip_prefix`, `api_name`) VALUES ('abd', '/abd/**', NULL, 'http://duan-abd:8080/abd/', '0', '1', '1', NULL);
 INSERT INTO `gateway_api_define` (`id`, `path`, `service_id`, `url`, `retryable`, `enabled`, `strip_prefix`, `api_name`) VALUES ('auo', '/auo/**', NULL, 'http://duan-auo:8080/auo/', '0', '1', '1', NULL);
