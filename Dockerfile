@@ -2,7 +2,7 @@ FROM mysql:5.7
 MAINTAINER leon_xi@163.com
 
 #设置免密登录
-ENV MYSQL_ALLOW_EMPTY_PASSWORD yes
+ENV MYSQL_ROOT_PASSWORD 1234
 
 #将所需文件放到容器中
 COPY setup.sh /mysql/setup.sh
