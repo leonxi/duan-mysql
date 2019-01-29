@@ -5,11 +5,8 @@ MAINTAINER leon_xi@163.com
 ENV MYSQL_ROOT_PASSWORD 1234
 
 #将所需文件放到容器中
-COPY setup.sh /mysql/setup.sh
+COPY setup.sh /docker-entrypoint-initdb.d/setup.sh
 COPY init_database_duan.sql /mysql/init_database_duan.sql
 COPY init_database_duan_privileges.sql /mysql/init_database_duan_privileges.sql
 
-RUN chmod +x /mysql/setup.sh
-
-#设置容器启动时执行的命令
-CMD ["sh", "/mysql/setup.sh"]
+RUN chmod +x /docker-entrypoint-initdb.d/setup.sh
